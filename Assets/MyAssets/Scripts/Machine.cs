@@ -44,7 +44,7 @@ public abstract class Machine : CustomManager
                 var product = PoolManager.Instance.GetProductObject(productionType);
 
                 if (product != null)
-                    productCollactableArea.SettingProduct(product);
+                    productCollactableArea.SettingProduct(product, transform.position);
             }
         }
     }

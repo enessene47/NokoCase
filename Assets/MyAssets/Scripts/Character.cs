@@ -50,9 +50,11 @@ public class Character : MonoBehaviour
 
     public void ProductCollect(Product product)
     {
+        product.transform.SetParent(stackPoint);
+
         collectedProduct.Push(product);
 
-        product.gameObject.SetFalse();
+        product.AddProductToStackWithJump(Vector3.zero + Vector3.up * collectedProduct.Count * product.CharacterSpacingUp);
     }
 
     public Product ProductDrop()

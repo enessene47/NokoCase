@@ -24,15 +24,11 @@ public abstract class ProductArea : CustomManager
 
     public abstract void CharacterInteraction(Character character);
 
-    public void SettingProduct(Product product)
+    public void SettingProduct(Product product, Vector3 spawnPoint)
     {
         product.SetBaseTransform();
 
-        product.transform.SetParent(transform);
-
-        product.transform.localPosition = Vector3.zero;
-
-        product.gameObject.SetTrue();
+        product.transform.position = spawnPoint;
 
         int productCount = products.Count;
 
@@ -50,8 +46,10 @@ public abstract class ProductArea : CustomManager
 
         localPos += _spawnStartPoint;
 
-        product.transform.localPosition = localPos;
+        product.gameObject.SetTrue();
 
         products.Push(product);
+
+        product.AddProductToStackWithJump(localPos);
     }
 }

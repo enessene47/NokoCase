@@ -4,8 +4,6 @@ public sealed class DroppableArea : ProductArea, IDroppable
 {
     public override void CharacterInteraction(Character character)
     {
-        Debug.Log(character.Droppable(ProductType));
-
         if(character.Droppable(ProductType))
             Drop(character.ProductDrop());
     }
@@ -15,7 +13,7 @@ public sealed class DroppableArea : ProductArea, IDroppable
         if (product == null)
             return;
 
-        SettingProduct(product);
+        SettingProduct(product, product.transform.position);
     }
 
 }

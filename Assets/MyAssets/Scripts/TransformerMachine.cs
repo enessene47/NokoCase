@@ -20,12 +20,18 @@ public sealed class TransformerMachine : Machine
             {
                 var product = _productDroppableArea.products.Pop();
 
-                PoolManager.Instance.SetProductObject(product);
+                product.transform.SetParent(transform);
 
-                product = PoolManager.Instance.GetProductObject(productCollactableArea.ProductType);
+                product.AddProductToStackWithJump(Vector3.zero, () =>
+                {
+                    PoolManager.Instance.SetProductObject(product);
 
-                if (product != null)
-                    productCollactableArea.SettingProduct(product);
+                    product = PoolManager.Instance.GetProductObject(productCollactableArea.ProductType);
+
+                    if (product != null)
+                        productCollactableArea.SettingProduct(product, transform.position);
+                }
+                );
             }
         }
     }
