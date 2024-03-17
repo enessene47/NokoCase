@@ -18,6 +18,8 @@ public sealed class TransformerMachine : Machine
 
             if (MachineRun)
             {
+                smokeDark.Play();
+
                 var product = _productDroppableArea.products.Pop();
 
                 product.transform.SetParent(transform);
@@ -33,6 +35,8 @@ public sealed class TransformerMachine : Machine
                 }
                 );
             }
+            else
+                smokeDark.Stop();
         }
     }
 }

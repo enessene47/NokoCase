@@ -15,6 +15,9 @@ public abstract class Machine : CustomManager
 
     [SerializeField] protected ProductArea productCollactableArea;
 
+    [SerializeField] protected ParticleSystem smokeDark;    
+    
+
     public bool MachineRun {  get; private set; }
 
     protected virtual void Start()
@@ -37,15 +40,19 @@ public abstract class Machine : CustomManager
 
         while(GameManager.Instance.GameActive)
         {
-            yield return new WaitForSeconds(productionSpeed);
-
             if(MachineRun)
             {
+                smokeDark.Play();
+
                 var product = PoolManager.Instance.GetProductObject(productionType);
 
                 if (product != null)
                     productCollactableArea.SettingProduct(product, transform.position);
             }
+            else
+                smokeDark.Stop();
+
+            yield return new WaitForSeconds(productionSpeed);
         }
     }
 }
