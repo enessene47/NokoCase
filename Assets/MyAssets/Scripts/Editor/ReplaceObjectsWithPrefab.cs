@@ -9,7 +9,9 @@ public class ReplaceObjectsWithPrefab : EditorWindow
     static void CreateWindow()
     {
         ReplaceObjectsWithPrefab window = GetWindow<ReplaceObjectsWithPrefab>();
+
         window.titleContent = new GUIContent("Replace Objects with Prefab");
+
         window.Show();
     }
 
@@ -30,12 +32,17 @@ public class ReplaceObjectsWithPrefab : EditorWindow
         foreach (GameObject obj in selectedObjects)
         {
             GameObject newObject = PrefabUtility.InstantiatePrefab(prefab) as GameObject;
+
             newObject.transform.position = obj.transform.position;
+
             newObject.transform.rotation = obj.transform.rotation;
+
             newObject.transform.localScale = obj.transform.localScale;
+
             newObject.transform.parent = obj.transform.parent;
 
             Undo.RegisterCreatedObjectUndo(newObject, "Replace Objects with Prefab");
+
             Undo.DestroyObjectImmediate(obj);
         }
     }

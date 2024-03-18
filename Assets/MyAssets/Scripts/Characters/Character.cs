@@ -11,13 +11,19 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected Transform stackPoint;
 
+    [Header("Move Seetings")]
+
     [SerializeField] protected float movementSpeed = 5.0f;
 
     [SerializeField] protected float rotationSpeed = 5.0f;
 
+    [Header("Stack Settings")]
+
     [SerializeField] protected int productMaxStackCount;
 
-    [SerializeField] private float _interactionSpeed = 1.0f;
+    [SerializeField] protected float interactionSpeed = .5f;
+
+    [Header("Stack Tilt Settings")]
 
     [SerializeField] protected float tiltAngle = 10.0f;
 
@@ -43,8 +49,8 @@ public class Character : MonoBehaviour
 
     public bool IsMoving { get; set; }
 
-    public bool Collectable(Constants.ProductType productType) => (collectedProduct.Count == 0 || collectedProduct.Peek().ProtuctType == productType) && collectedProduct.Count <= productMaxStackCount;
-    public bool Droppable(Constants.ProductType productType) => collectedProduct.Count > 0 && collectedProduct.Peek().ProtuctType == productType;
+    public virtual bool Collectable(Constants.ProductType productType) => (collectedProduct.Count == 0 || collectedProduct.Peek().ProtuctType == productType) && collectedProduct.Count < productMaxStackCount;
+    public virtual bool Droppable(Constants.ProductType productType) => collectedProduct.Count > 0 && collectedProduct.Peek().ProtuctType == productType;
 
     protected virtual void Start()
     {
@@ -104,7 +110,7 @@ public class Character : MonoBehaviour
         {
             _interactionTimeCounter += Time.deltaTime;
 
-            if (_interactionTimeCounter >= _interactionSpeed)
+            if (_interactionTimeCounter >= interactionSpeed)
             {
                 productArea.CharacterInteraction(this);
 

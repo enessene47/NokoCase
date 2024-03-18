@@ -1262,6 +1262,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3065183561399023213, guid: 6e84347d1eb56e149b1f913bd7b527b4, type: 3}
+      propertyPath: productMaxStackCount
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e84347d1eb56e149b1f913bd7b527b4, type: 3}
 --- !u!114 &3881087802236504887 stripped
@@ -1365,7 +1369,7 @@ PrefabInstance:
       objectReference: {fileID: 244143843}
     - target: {fileID: 1317568611, guid: 77ff32c6f9e96714290c4a89470ee714, type: 3}
       propertyPath: _stateChangeControlTime
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4980032130062453204, guid: 77ff32c6f9e96714290c4a89470ee714, type: 3}
       propertyPath: m_RootOrder

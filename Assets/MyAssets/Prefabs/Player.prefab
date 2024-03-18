@@ -798,9 +798,9 @@ MonoBehaviour:
   stackPoint: {fileID: 4628390046103220614}
   movementSpeed: 10
   rotationSpeed: 20
-  productMaxStackCount: 10
+  productMaxStackCount: 5
   _interactionSpeed: 0.5
-  tiltAngle: 10
+  tiltAngle: 15
   lerpSpeed: 5
   _joystick: {fileID: 0}
   _characterModel: {fileID: 712899922940797328}

@@ -15,6 +15,10 @@ public class AICharacter : Character
 
     private Transform _targetTransform;
 
+    public override bool Collectable(Constants.ProductType productType) => (collectedProduct.Count == 0 || collectedProduct.Peek().ProtuctType == productType) && collectedProduct.Count < productMaxStackCount && _agent.isStopped;
+
+    public override bool Droppable(Constants.ProductType productType) => collectedProduct.Count > 0 && collectedProduct.Peek().ProtuctType == productType && _agent.isStopped;
+
     protected override void Start()
     {
         base.Start();
