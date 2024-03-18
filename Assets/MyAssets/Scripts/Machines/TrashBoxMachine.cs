@@ -10,20 +10,6 @@ public sealed class TrashBoxMachine : Machine
 
     [SerializeField] private float _destroySpeed;
 
-    [Header("DoShake Settings")]
-
-    [Tooltip("Swing duration")] [SerializeField] private float duration = 1f;
-
-    [Tooltip(" Swing strength")] [SerializeField] private float strength = 0.5f;
-
-    [Tooltip("Swing frequency")] [SerializeField] private int vibrato = 10;
-
-    [Tooltip("Randomness of the swing")] [SerializeField] private float randomness = 90;
-
-    [Tooltip("Whether to round the position to integer values")] [SerializeField] private bool snapping = false;
-
-    [Tooltip("Whether to slow down towards the end of the swing")] [SerializeField] private bool fadeOut = true;
-
     protected override bool SetRun() => _productDroppableArea.products.Count > 0;
 
     protected override IEnumerator Production()
@@ -45,8 +31,6 @@ public sealed class TrashBoxMachine : Machine
                     product.gameObject.SetActive(false);
 
                     PoolManager.Instance.SetProductObject(product);
-
-                    _view.DOShakePosition(duration, strength, vibrato, randomness, snapping, fadeOut);
                 }
                 );
             }
