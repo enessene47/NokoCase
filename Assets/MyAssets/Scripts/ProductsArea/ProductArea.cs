@@ -21,6 +21,9 @@ public abstract class ProductArea : CustomManager
 
     public Stack<Product> products = new();
 
+    public bool AINeed { get; set; }
+
+    public int ProductDropLimit { get; set; }
 
     public abstract void CharacterInteraction(Character character);
 

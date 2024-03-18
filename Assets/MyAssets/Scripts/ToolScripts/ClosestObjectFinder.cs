@@ -54,25 +54,4 @@ public static class ClosestObjectFinder
 
         return closestObject;
     }
-
-    public static Vector3 ClosestVertexToPoint(this Mesh mesh, Vector3 point)
-    {
-        Vector3[] vertices = mesh.vertices;
-        float minDistanceSqr = Mathf.Infinity; // Baþlangýç deðeri olarak sonsuz kabul ediyoruz.
-        Vector3 closestVertex = Vector3.zero;
-
-        foreach (Vector3 vertex in vertices)
-        {
-            Vector3 diff = point - vertex;
-            float distSqr = diff.sqrMagnitude; // Kare deðerini alýyoruz çünkü karekök hesaplamasý pahalýdýr.
-
-            if (distSqr < minDistanceSqr)
-            {
-                minDistanceSqr = distSqr;
-                closestVertex = vertex;
-            }
-        }
-
-        return closestVertex;
-    }
 }

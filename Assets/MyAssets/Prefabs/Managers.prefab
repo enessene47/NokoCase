@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4980032130062453201}
   - component: {fileID: 4980032130062453206}
   - component: {fileID: 4980032130062453207}
+  - component: {fileID: 1317568611}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -72,4 +73,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _processedObjectPrefab: {fileID: 3399541925852740882, guid: b03a786bc623cdc4ab6b8a96516220f6, type: 3}
   _unprocessedObjectPrefab: {fileID: 3215751752413693602, guid: 976e0330d4453d24abef6241df171cbc, type: 3}
-  _processesObjectCount: 10
+  _transformedObjectPrefab: {fileID: 4217161001539528300, guid: 3ef06db19fb15c8438e7a34c7969893a, type: 3}
+  _productCount: 10
+--- !u!114 &1317568611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4980032130062453205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a842ec38a166d874a966bc80f75c8dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateChangeControlTime: 5
+  collectUnprocessedArea: {fileID: 0}
+  dropUnprocessedArea: {fileID: 0}
+  collectTransformedArea: {fileID: 0}
+  dropTransformedArea: {fileID: 0}

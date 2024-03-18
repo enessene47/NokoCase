@@ -23,6 +23,8 @@ public abstract class Machine : CustomManager
     protected virtual void Start()
     {
         Observer.Instance.Start += () => StartCoroutine(Production());
+
+        productCollactableArea.ProductDropLimit = productionLimit;
     }
 
     private void Update()
@@ -51,6 +53,8 @@ public abstract class Machine : CustomManager
             }
             else
                 smokeDark.Stop();
+
+            productCollactableArea.AINeed = productCollactableArea.products.Count > 0 ? true : false;
 
             yield return new WaitForSeconds(productionSpeed);
         }

@@ -16,9 +16,11 @@ public static class HeatingSelectedObject
             if (Selection.activeGameObject != null)
             {
                 Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+
                 if (Physics.Raycast(ray, out RaycastHit hit))
                 {
                     Selection.activeGameObject.transform.position = hit.point;
+
                     Event.current.Use();
                 }
             }

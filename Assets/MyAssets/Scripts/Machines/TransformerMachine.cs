@@ -6,6 +6,13 @@ public sealed class TransformerMachine : Machine
     [Header("TransformerMachine")]
     [SerializeField] private ProductArea _productDroppableArea;
 
+    protected override void Start()
+    {
+        base.Start();
+
+        _productDroppableArea.ProductDropLimit = productionLimit;
+    }
+
     protected override bool SetRun() => GameManager.Instance.GameActive && productCollactableArea.products.Count < productionLimit && _productDroppableArea.products.Count > 0;
 
     protected override IEnumerator Production()
@@ -37,6 +44,10 @@ public sealed class TransformerMachine : Machine
             }
             else
                 smokeDark.Stop();
+
+            productCollactableArea.AINeed = productCollactableArea.products.Count > 0 ? true : false;
+
+            _productDroppableArea.AINeed = _productDroppableArea.products.Count < productionLimit ? true : false;
         }
     }
 }

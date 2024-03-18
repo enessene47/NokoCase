@@ -58,7 +58,7 @@ public class MenuItems
         }
     }
 
-    /*[MenuItem("Tools/Screen Shoot _s")]
+    [MenuItem("Tools/Screen Shoot _s")]
     private static void ScreenShot()
     {
         PathCalculator();
@@ -70,7 +70,7 @@ public class MenuItems
         iScrShotNo++;
 
         PlayerPrefs.SetInt("iScrShotNo", iScrShotNo);
-    }*/
+    }
 
     [MenuItem("Tools/Money")]
     private static void MoneyCreate()

@@ -5,7 +5,7 @@ public class ReplaceObjectsWithPrefab : EditorWindow
 {
     private GameObject prefab;
 
-    [MenuItem("Custom/Replace Objects with Prefab")]
+    [MenuItem("Tools/Replace Objects with Prefab")]
     static void CreateWindow()
     {
         ReplaceObjectsWithPrefab window = GetWindow<ReplaceObjectsWithPrefab>();

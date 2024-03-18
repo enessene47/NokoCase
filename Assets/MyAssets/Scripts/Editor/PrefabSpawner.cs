@@ -4,8 +4,11 @@ using UnityEngine;
 public class PrefabSpawner : EditorWindow
 {
     private GameObject parentObject;
+
     private GameObject prefab;
+
     private float radius;
+
     private int count;
 
     [MenuItem("Tools/Prefab Spawner")]
@@ -19,8 +22,11 @@ public class PrefabSpawner : EditorWindow
         EditorGUILayout.LabelField("Prefab Spawner", EditorStyles.boldLabel);
 
         parentObject = EditorGUILayout.ObjectField("Parent Object", parentObject, typeof(GameObject), true) as GameObject;
+
         prefab = EditorGUILayout.ObjectField("Prefab", prefab, typeof(GameObject), false) as GameObject;
+
         radius = EditorGUILayout.FloatField("Radius", radius);
+
         count = EditorGUILayout.IntField("Count", count);
 
         if (GUILayout.Button("Spawn Prefabs"))
@@ -34,12 +40,14 @@ public class PrefabSpawner : EditorWindow
         if (parentObject == null)
         {
             Debug.LogError("Parent Object is not assigned.");
+
             return;
         }
 
         if (prefab == null)
         {
             Debug.LogError("Prefab is not assigned.");
+
             return;
         }
 
@@ -56,6 +64,7 @@ public class PrefabSpawner : EditorWindow
             spawnedPrefab.transform.parent = parentObject.transform;
 
             spawnedPrefab.transform.position = spawnPosition;
+
             spawnedPrefab.transform.rotation = Quaternion.identity;
         }
     }

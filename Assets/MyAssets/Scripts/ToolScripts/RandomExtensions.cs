@@ -11,6 +11,7 @@ public static class RandomExtensions
             return default;
 
         int randomIndex = UnityEngine.Random.Range(0, list.Count);
+
         return list[randomIndex];
     }
 
@@ -20,6 +21,7 @@ public static class RandomExtensions
             return default;
 
         int randomIndex = UnityEngine.Random.Range(0, array.Length);
+
         return array[randomIndex];
     }
 
@@ -35,21 +37,24 @@ public static class RandomExtensions
     public static int FindIndexOfClosest(this List<Vector3> list, Vector3 targetPosition)
     {
         if (list == null || list.Count == 0)
-            return -1; // List boþ olduðu durumda geçerli bir index bulunamaz.
+            return -1;
 
-        float closestDistanceSqr = float.MaxValue; // Baþlangýçta en yakýn mesafeyi sonsuz olarak ayarlýyoruz.
-        int closestIndex = -1; // Baþlangýçta en yakýn index'i geçerli olmayan bir deðer olarak ayarlýyoruz.
+        float closestDistanceSqr = float.MaxValue;
+
+        int closestIndex = -1;
 
         for (int i = 0; i < list.Count; i++)
         {
             float distanceSqr = (list[i] - targetPosition).sqrMagnitude;
+
             if (distanceSqr < closestDistanceSqr)
             {
                 closestDistanceSqr = distanceSqr;
+
                 closestIndex = i;
             }
         }
 
-        return closestIndex; // En yakýn pozisyonun index'ini döndürüyoruz.
+        return closestIndex;
     }
 }

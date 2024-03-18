@@ -4,10 +4,13 @@ using System.Collections.Generic;
 public class EllipticPointsGenerator : MonoBehaviour
 {
     public Transform startPointTransform;
+
     public Transform endPointTransform;
     public int pointCount = 100;
+
     public float averageRadius = 5f;
-    public float amplitude = 2f; // Kývrým miktarý
+
+    public float amplitude = 2f;
 
     private Vector3[] points = null;
 
@@ -16,6 +19,7 @@ public class EllipticPointsGenerator : MonoBehaviour
         if (startPointTransform == null || endPointTransform == null)
         {
             Debug.LogError("Start veya End Transform belirtilmemiþ!");
+
             return;
         }
 

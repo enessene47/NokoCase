@@ -15,10 +15,14 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected float rotationSpeed = 5.0f;
 
-    [SerializeField] protected int productStackCount;
+    [SerializeField] protected int productMaxStackCount;
 
     [SerializeField] private float _interactionSpeed = 1.0f;
-    
+
+    [SerializeField] protected float tiltAngle = 10.0f;
+
+    [SerializeField] protected float lerpSpeed = 5.0f;
+
     public ICharacterState CurrentState;
 
     public ICharacterState IdleState = new IdleState();
@@ -29,23 +33,33 @@ public class Character : MonoBehaviour
 
     protected ProductArea productArea = null;
 
+    protected Quaternion startRotation;
+
+    protected Quaternion targetRotation;
+
     private float _interactionTimeCounter = 0.0f;
 
     public Animator Animator { get { return animator; }}
 
     public bool IsMoving { get; set; }
 
-    public bool Collectable(Constants.ProductType productType) => (collectedProduct.Count == 0 || collectedProduct.Peek().ProtuctType == productType) && collectedProduct.Count < productStackCount;
+    public bool Collectable(Constants.ProductType productType) => (collectedProduct.Count == 0 || collectedProduct.Peek().ProtuctType == productType) && collectedProduct.Count <= productMaxStackCount;
     public bool Droppable(Constants.ProductType productType) => collectedProduct.Count > 0 && collectedProduct.Peek().ProtuctType == productType;
 
     protected virtual void Start()
     {
         TransitionToState(IdleState);
+
+        startRotation = transform.localRotation;
     }
 
     void Update()
     {
         CurrentState.UpdateState(this);
+
+        targetRotation = IsMoving ? Quaternion.Euler(-tiltAngle, 0, 0) : startRotation;
+
+        stackPoint.localRotation = Quaternion.Lerp(stackPoint.localRotation, targetRotation, Time.deltaTime * lerpSpeed);
     }
 
     public void ProductCollect(Product product)
