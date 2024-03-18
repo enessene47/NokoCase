@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class AICharacter : Character
 {
-    [SerializeField] private NavMeshAgent _agent;
+    private Transform _targetTransform;
 
     public AIManagers.AIState AIActiveTaskState { get; private set; }
 
@@ -13,11 +12,9 @@ public class AICharacter : Character
 
     public int ProductMaxStackCount => productMaxStackCount;
 
-    private Transform _targetTransform;
+    public override bool Collectable(Constants.ProductType productType) => (collectedProduct.Count == 0 || collectedProduct.Peek().ProtuctType == productType) && collectedProduct.Count < productMaxStackCount && NavMeshAgent.isStopped;
 
-    public override bool Collectable(Constants.ProductType productType) => (collectedProduct.Count == 0 || collectedProduct.Peek().ProtuctType == productType) && collectedProduct.Count < productMaxStackCount && _agent.isStopped;
-
-    public override bool Droppable(Constants.ProductType productType) => collectedProduct.Count > 0 && collectedProduct.Peek().ProtuctType == productType && _agent.isStopped;
+    public override bool Droppable(Constants.ProductType productType) => collectedProduct.Count > 0 && collectedProduct.Peek().ProtuctType == productType && NavMeshAgent.isStopped;
 
     protected override void Start()
     {
@@ -25,9 +22,9 @@ public class AICharacter : Character
 
         AIActiveTaskState = AIManagers.AIState.Wait;
 
-        _agent.speed = movementSpeed;
+        NavMeshAgent.speed = movementSpeed;
 
-        _agent.angularSpeed = rotationSpeed;
+        NavMeshAgent.angularSpeed = rotationSpeed;
     }
 
     private void LateUpdate()
@@ -38,16 +35,16 @@ public class AICharacter : Character
 
         if (_targetTransform != null)
         {
-            _agent.SetDestination(_targetTransform.position);
+            NavMeshAgent.SetDestination(_targetTransform.position);
 
-            _agent.isStopped = false;
+            NavMeshAgent.isStopped = false;
 
-            if (!_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance)
-                _agent.isStopped = true;
+            if (!NavMeshAgent.pathPending && NavMeshAgent.remainingDistance <= NavMeshAgent.stoppingDistance)
+                NavMeshAgent.isStopped = true;
         }
         else
-            _agent.isStopped = true;
+            NavMeshAgent.isStopped = true;
 
-        IsMoving = !_agent.isStopped;
+        IsMoving = !NavMeshAgent.isStopped;
     }
 }

@@ -3,7 +3,7 @@ public class RunningState : ICharacterState
 {
     public void EnterState(Character controller)
     {
-        controller.Animator.SetBool("isRunning", true);
+        controller.GetCharacteAnimator.SetBool("isRunning", true);
     }
 
     public void UpdateState(Character controller)

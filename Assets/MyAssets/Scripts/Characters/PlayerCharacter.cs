@@ -38,6 +38,6 @@ public sealed class PlayerCharacter : Character
 
     private void Move()
     {
-        physics.MovePosition(physics.position + _characterModel.forward * movementSpeed * Time.fixedDeltaTime);
+        Rigidbody.MovePosition(Rigidbody.position + _characterModel.forward * movementSpeed * Time.fixedDeltaTime);
     }
 }

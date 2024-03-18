@@ -3,7 +3,7 @@ public class IdleState : ICharacterState
 {
     public void EnterState(Character controller)
     {
-        controller.Animator.SetBool("isRunning", false);
+        controller.GetCharacteAnimator.SetBool("isRunning", false);
     }
 
 

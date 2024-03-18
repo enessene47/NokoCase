@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3ae98e7fa3cb2c43b726a501669c1b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _protuctType: 2
+  protuctType: 2
   baseRotation: {x: 0, y: 0, z: 270}
   baseScale: {x: 1, y: 1, z: 1}
   characterSpacingUp: 1.1

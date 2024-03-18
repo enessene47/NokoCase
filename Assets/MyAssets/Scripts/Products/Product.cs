@@ -1,19 +1,18 @@
 using DG.Tweening;
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Product : CustomManager
 {
-    [SerializeField] protected Constants.ProductType _protuctType;
+    [SerializeField] protected Constants.ProductType protuctType;
 
     [SerializeField] protected Vector3 baseRotation;
 
     [SerializeField] protected Vector3 baseScale;
 
-    [SerializeField] private float characterSpacingUp;
+    [SerializeField] protected float characterSpacingUp;
 
-    public Constants.ProductType ProtuctType => _protuctType;
+    public Constants.ProductType ProtuctType => protuctType;
 
     public float CharacterSpacingUp => characterSpacingUp;
 
@@ -26,7 +25,7 @@ public abstract class Product : CustomManager
         transform.rotation = Quaternion.Euler(baseRotation);
     }
 
-    public void AddProductToStackWithJump(Vector3 targetPosition, Action pushStack = null)
+    public void AddProductToStackWithJump(Vector3 targetPosition, Action act = null)
     {
         float jumpPower = 2f;
 
@@ -36,10 +35,8 @@ public abstract class Product : CustomManager
 
         transform.DOLocalJump(targetPosition, jumpPower, numJumps, .5f).OnComplete(() =>
         {
-            if(pushStack != null)
-            {
-                pushStack();
-            }
+            if(act != null)
+                act();
         });
     }
 }

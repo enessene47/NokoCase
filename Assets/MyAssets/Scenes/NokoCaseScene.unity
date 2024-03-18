@@ -1367,10 +1367,6 @@ PrefabInstance:
       propertyPath: collectUnprocessedArea
       value: 
       objectReference: {fileID: 244143843}
-    - target: {fileID: 1317568611, guid: 77ff32c6f9e96714290c4a89470ee714, type: 3}
-      propertyPath: _stateChangeControlTime
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4980032130062453204, guid: 77ff32c6f9e96714290c4a89470ee714, type: 3}
       propertyPath: m_RootOrder
       value: 0

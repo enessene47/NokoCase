@@ -1,11 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : CustomManager
 {
     [Header("Character")]
-
-    [SerializeField] protected Rigidbody physics;
 
     [SerializeField] protected Animator animator;
 
@@ -29,12 +27,6 @@ public class Character : MonoBehaviour
 
     [SerializeField] protected float lerpSpeed = 5.0f;
 
-    public ICharacterState CurrentState;
-
-    public ICharacterState IdleState = new IdleState();
-
-    public ICharacterState RunningState = new RunningState();
-
     protected Stack<Product> collectedProduct = new();
 
     protected ProductArea productArea = null;
@@ -45,7 +37,13 @@ public class Character : MonoBehaviour
 
     private float _interactionTimeCounter = 0.0f;
 
-    public Animator Animator { get { return animator; }}
+    public ICharacterState CurrentState;
+
+    public ICharacterState IdleState = new IdleState();
+
+    public ICharacterState RunningState = new RunningState();
+
+    public Animator GetCharacteAnimator => animator;
 
     public bool IsMoving { get; set; }
 

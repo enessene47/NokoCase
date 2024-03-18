@@ -2,17 +2,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections;
 
-public class SheepAI : MonoBehaviour
+public class SheepAI : CustomManager
 {
-    public NavMeshAgent agent;
-
-    public Animator animator;
-
-    public float wanderRadius = 10f;
-
-    public float wanderDelay = 5f;
-
-    private float remainingDistanceThreshold = 0.5f;
+    [SerializeField] private ParticleSystem _sleppingZZZ;
 
     private bool isMoving;
 
@@ -26,28 +18,32 @@ public class SheepAI : MonoBehaviour
         if (!GameManager.Instance.GameActive || !isMoving)
             return;
 
-        if(!agent.pathPending && agent.remainingDistance <= remainingDistanceThreshold) 
+        if(!NavMeshAgent.pathPending && NavMeshAgent.remainingDistance <= Constants.Instance.remainingDistanceThreshold) 
         {
             isMoving = false;
 
-            agent.isStopped = true;
+            NavMeshAgent.isStopped = true;
 
-            StartCoroutine(SetNewDestination(wanderDelay));
+            StartCoroutine(SetNewDestination(Constants.Instance.wanderDelay));
         }
 
 
-        animator.SetBool("isMoving", isMoving);
+        Animator.SetBool("isMoving", isMoving);
     }
 
     IEnumerator SetNewDestination(float wait)
     {
+        _sleppingZZZ.Play();
+
         yield return new WaitForSeconds(wait);
 
-        agent.SetDestination(RandomNavmeshLocation(wanderRadius));
+        NavMeshAgent.SetDestination(RandomNavmeshLocation(Constants.Instance.wanderRadius));
 
-        agent.isStopped = false;
+        NavMeshAgent.isStopped = false;
 
         isMoving = true;
+
+        _sleppingZZZ.Stop();
     }
 
     public Vector3 RandomNavmeshLocation(float radius)
