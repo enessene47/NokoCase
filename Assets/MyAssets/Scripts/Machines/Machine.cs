@@ -13,7 +13,7 @@ public abstract class Machine : CustomManager
 
     [SerializeField] protected Animator productionAnimator;
 
-    [SerializeField] protected ProductArea productCollactableArea;
+    [SerializeField] protected ProductArea mainProductArea;
 
     [SerializeField] protected ParticleSystem smokeDark;    
     
@@ -24,7 +24,7 @@ public abstract class Machine : CustomManager
     {
         Observer.Instance.Start += () => StartCoroutine(Production());
 
-        productCollactableArea.ProductDropLimit = productionLimit;
+        mainProductArea.ProductDropLimit = productionLimit;
     }
 
     private void Update()
@@ -49,12 +49,12 @@ public abstract class Machine : CustomManager
                 var product = PoolManager.Instance.GetProductObject(productionType);
 
                 if (product != null)
-                    productCollactableArea.SettingProduct(product, transform.position);
+                    mainProductArea.SettingProduct(product, transform.position);
             }
             else
                 smokeDark.Stop();
 
-            productCollactableArea.AINeed = productCollactableArea.products.Count > 0 ? true : false;
+            mainProductArea.AINeed = mainProductArea.products.Count > 0 ? true : false;
 
             yield return new WaitForSeconds(productionSpeed);
         }

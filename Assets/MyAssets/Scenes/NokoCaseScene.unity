@@ -232,6 +232,31 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 2, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &697020027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 560151540797150789, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
+  m_PrefabInstance: {fileID: 560151541249023454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &697020032
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697020027}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ef7821d0f94c5ea46a5f5bffe0092425, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +980,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1443947182}
     m_Modifications:
+    - target: {fileID: 560151540797150785, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 560151540797150785, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560151540797150785, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560151540797150785, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560151540797150785, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560151540797150785, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 560151540797150785, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 560151541657020188, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -999,9 +1052,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 560151541657020189, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
+      propertyPath: productionAnimator
+      value: 
+      objectReference: {fileID: 697020032}
     - target: {fileID: 560151541657020191, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
       propertyPath: m_Name
-      value: TrashBox
+      value: TrashBoxMachine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8f5005c86f2eb44cbfa8ba227894327, type: 3}
@@ -1477,6 +1534,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7550375577494320093, guid: 9fb6e848bf6073e40a95c4b309989c56, type: 3}
+      propertyPath: mainProductArea
+      value: 
+      objectReference: {fileID: 244143843}
+    - target: {fileID: 7550375577494320093, guid: 9fb6e848bf6073e40a95c4b309989c56, type: 3}
       propertyPath: productionLimit
       value: 12
       objectReference: {fileID: 0}
@@ -1836,6 +1897,10 @@ PrefabInstance:
       propertyPath: productionType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8724520509301543678, guid: 2af0d9c7b4b7d6f4e93ec9becf89fc0d, type: 3}
+      propertyPath: mainProductArea
+      value: 
+      objectReference: {fileID: 1621409020}
     - target: {fileID: 8724520509301543678, guid: 2af0d9c7b4b7d6f4e93ec9becf89fc0d, type: 3}
       propertyPath: productionLimit
       value: 9

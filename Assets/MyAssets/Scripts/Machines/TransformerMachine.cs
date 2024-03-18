@@ -13,7 +13,7 @@ public sealed class TransformerMachine : Machine
         _productDroppableArea.ProductDropLimit = productionLimit;
     }
 
-    protected override bool SetRun() => GameManager.Instance.GameActive && productCollactableArea.products.Count < productionLimit && _productDroppableArea.products.Count > 0;
+    protected override bool SetRun() => GameManager.Instance.GameActive && mainProductArea.products.Count < productionLimit && _productDroppableArea.products.Count > 0;
 
     protected override IEnumerator Production()
     {
@@ -35,17 +35,17 @@ public sealed class TransformerMachine : Machine
                 {
                     PoolManager.Instance.SetProductObject(product);
 
-                    product = PoolManager.Instance.GetProductObject(productCollactableArea.ProductType);
+                    product = PoolManager.Instance.GetProductObject(mainProductArea.ProductType);
 
                     if (product != null)
-                        productCollactableArea.SettingProduct(product, transform.position);
+                        mainProductArea.SettingProduct(product, transform.position);
                 }
                 );
             }
             else
                 smokeDark.Stop();
 
-            productCollactableArea.AINeed = productCollactableArea.products.Count > 0 ? true : false;
+            mainProductArea.AINeed = mainProductArea.products.Count > 0 ? true : false;
 
             _productDroppableArea.AINeed = _productDroppableArea.products.Count < productionLimit ? true : false;
         }

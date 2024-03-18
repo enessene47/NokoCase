@@ -144,6 +144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1842e131a174c3a428c9e8c7ca5e9ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  productionType: 0
+  productionLimit: 10
+  productionSpeed: 3
+  productionAnimator: {fileID: 0}
+  mainProductArea: {fileID: 6435198887213243287}
+  smokeDark: {fileID: 0}
   _productDroppableArea: {fileID: 6435198887213243287}
   _view: {fileID: 560151540797150785}
   _destroySpeed: 3

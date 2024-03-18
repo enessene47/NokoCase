@@ -2,7 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
-public sealed class TrashBoxController : CustomManager
+public sealed class TrashBoxMachine : Machine
 {
     [SerializeField] private ProductArea _productDroppableArea;
 
@@ -24,20 +24,17 @@ public sealed class TrashBoxController : CustomManager
 
     [Tooltip("Whether to slow down towards the end of the swing")] [SerializeField] private bool fadeOut = true;
 
-    private void Start()
-    {
-        Observer.Instance.Start += () => StartCoroutine(RunDestroy());
-    }
+    protected override bool SetRun() => _productDroppableArea.products.Count > 0;
 
-    private IEnumerator RunDestroy()
+    protected override IEnumerator Production()
     {
-       yield return null;
+        yield return null;
 
-       while (GameManager.Instance.GameActive)
+        while (GameManager.Instance.GameActive)
         {
-            yield return new WaitForSeconds(_destroySpeed);
+            yield return new WaitForSeconds(productionSpeed);
 
-            if(_productDroppableArea.products.Count > 0)
+            if (MachineRun)
             {
                 var product = _productDroppableArea.products.Pop();
 
@@ -53,6 +50,8 @@ public sealed class TrashBoxController : CustomManager
                 }
                 );
             }
+
+            mainProductArea.AINeed = mainProductArea.products.Count < productionLimit ? true : false;
         }
     }
 }
